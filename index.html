@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#10251F">
+    <meta name="description" content="Explore air quality and hourly pollution forecast with AirScope.">
+    <title>AirScope - Air Quality Dashboard</title>
+    <link rel="stylesheet" href="styles/style.css">
+    
+
+</head>
+<body>
+    
+        <div class="app">
+
+            <header class="header">
+                <div class="brand">
+  <div class="brand-icon" aria-hidden="true">
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M3 8C6 5 9 11 12 8C15 5 18 5 21 8"
+        stroke="currentColor"
+        stroke-width="1.8"
+        stroke-linecap="round"
+      />
+      <path
+        d="M3 13C6 10 9 16 12 13C15 10 18 10 21 13"
+        stroke="currentColor"
+        stroke-width="1.8"
+        stroke-linecap="round"
+      />
+      <path
+        d="M5 18H15"
+        stroke="currentColor"
+        stroke-width="1.8"
+        stroke-linecap="round"
+      />
+    </svg>
+  </div>
+
+  <div class="brand-text">
+    <h1>AirScope<span>.</span></h1>
+    <p>Air quality, clearly understood.</p>
+  </div>
+</div>
+
+<div class="header-status">
+  <span class="status-dot"></span>
+  <span>Air intelligence</span>
+</div>
+
+
+            </header>
+
+            <!-- City Search -->
+<section class="search-section">
+  <div class="search-heading">
+    <h2>Explore your city's air</h2>
+    <p>Search a location to discover its air quality.</p>
+  </div>
+
+  <form class="search-form" id="search-form">
+    <input
+      type="text"
+      id="city-input"
+      placeholder="Enter a city name..."
+      aria-label="City name"
+    />
+
+    <button type="submit">
+      Search
+    </button>
+  </form>
+
+  <p id="search-message" role="status" aria-live="polite"></p>
+
+
+</section>
+<!-- Interactive World Map -->
+<section class="map-section">
+  <div class="section-heading">
+    <div>
+      <h2>Explore the world</h2>
+      <p>Discover air quality across different locations.</p>
+    </div>
+  </div>
+
+  <div class="map-card">
+  <div class="world-map">
+    <div class="scan-line"></div>
+    <div class="map-glow"></div>
+
+    <div class="map-status-panel">
+  <span class="live-indicator"></span>
+  <div>
+    <p class="status-title">AIR QUALITY NETWORK</p>
+    <p class="status-subtitle">Global overview</p>
+  </div>
+  <span class="status-tag">DEMO</span>
+</div>
+
+    <svg
+      class="world-svg"
+      viewBox="0 0 900 450"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-label="Decorative animated world map"
+      role="img"
+    >
+      <defs>
+        <linearGradient id="land-gradient" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#9BE7BD" />
+          <stop offset="100%" stop-color="#3F8F70" />
+        </linearGradient>
+      </defs>
+
+      <g class="continents" fill="url(#land-gradient)">
+        <path d="M100 105 L145 72 L205 80 L237 112 L220 145 L185 151 L165 188 L133 175 L118 143 Z" />
+        <path d="M205 190 L243 205 L257 250 L238 300 L219 345 L198 315 L188 265 Z" />
+        <path d="M350 105 L390 80 L440 92 L455 115 L425 135 L393 127 L375 150 L345 140 Z" />
+        <path d="M385 155 L425 160 L448 202 L431 260 L405 305 L382 260 L370 207 Z" />
+        <path d="M455 100 L510 72 L590 83 L645 110 L710 115 L750 145 L710 170 L655 157 L625 190 L580 175 L550 145 L500 153 L465 130 Z" />
+        <path d="M640 205 L680 200 L710 225 L695 260 L665 270 L645 245 Z" />
+        <path d="M750 300 L780 290 L800 310 L790 335 L760 330 Z" />
+      </g>
+       <g class="map-points">
+  <circle cx="430" cy="170" r="5" class="city-dot moderate" />
+  <circle cx="430" cy="170" r="13" class="pulse-ring" />
+
+  <circle cx="205" cy="140" r="5" class="city-dot good" />
+  <circle cx="205" cy="140" r="12" class="pulse-ring" />
+
+  <circle cx="570" cy="145" r="5" class="city-dot unhealthy" />
+  <circle cx="570" cy="145" r="12" class="pulse-ring" />
+
+  <circle cx="650" cy="225" r="5" class="city-dot good" />
+  <circle cx="650" cy="225" r="12" class="pulse-ring" />
+</g>
+<g class="city-labels">
+  <text x="442" y="164">Kabul</text>
+  <text x="217" y="134">New York</text>
+  <text x="582" y="139">Delhi</text>
+  <text x="662" y="219">Singapore</text>
+</g>
+     
+      <g class="connection-lines">
+  <path d="M205 140 Q315 70 430 170" />
+  <path d="M430 170 Q500 105 570 145" />
+  <path d="M430 170 Q535 220 650 225" />
+  <path d="M205 140 Q400 300 650 225" />
+</g>
+    </svg>
+
+    <div class="map-legend">
+  <span><i class="legend-dot good-dot"></i> Good</span>
+  <span><i class="legend-dot moderate-dot"></i> Moderate</span>
+  <span><i class="legend-dot unhealthy-dot"></i> Unhealthy</span>
+</div>
+
+<div class="map-caption">GLOBAL AIR QUALITY MONITOR</div>
+
+  </div>
+</div>
+</section>
+
+
+
+<!-- Air Quality Overview -->
+<section class="overview-section">
+  <div class="overview-card">
+    <div class="overview-top">
+      <div>
+        <p class="eyebrow">CURRENT AIR QUALITY</p>
+        <h2 id="city-name">Kabul, Afghanistan</h2>
+        <p class="updated-time" id="updated-time">Air quality overview</p>
+      </div>
+
+      <div class="aqi-badge">
+        <span class="status-dot"></span>
+        <span id="aqi-status">Moderate</span>
+      </div>
+    </div>
+
+    <div class="overview-content">
+      <div class="aqi-value">
+        <span class="aqi-number" id="aqi-number">72</span>
+        <span class="aqi-label">US AQI</span>
+      </div>
+
+      <div class="aqi-description">
+        <h3 id="aqi-heading">Air quality is acceptable</h3>
+        <p id="aqi-description">
+          Air quality may be a concern for a small number of
+          unusually sensitive people.
+        </p>
+      </div>
+    </div>
+
+    <div class="aqi-scale">
+      <div class="scale-labels">
+        <span>Good</span>
+        <span>Moderate</span>
+        <span>Unhealthy</span>
+      </div>
+      <div class="scale-track">
+        <div class="scale-marker"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Pollutant Cards -->
+<section class="pollutants-section">
+  <div class="section-heading">
+    <div>
+      <h2>Pollutant levels</h2>
+      <p>Understand what's in the air.</p>
+    </div>
+  </div>
+
+  <div class="pollutants-grid">
+    <article class="pollutant-card">
+      <span class="pollutant-name">PM2.5</span>
+      <p class="pollutant-value" id="pm25-value">18.4 <span>µg/m³</span></p>
+      <p class="pollutant-status">Fine particles</p>
+    </article>
+
+    <article class="pollutant-card">
+      <span class="pollutant-name">PM10</span>
+      <p class="pollutant-value" id="pm10-value">32.6 <span>µg/m³</span></p>
+      <p class="pollutant-status">Coarse particles</p>
+    </article>
+
+    <article class="pollutant-card">
+      <span class="pollutant-name">O₃</span>
+      <p class="pollutant-value" id="o3-value">41.2 <span>µg/m³</span></p>
+      <p class="pollutant-status">Ozone</p>
+    </article>
+
+    <article class="pollutant-card">
+      <span class="pollutant-name">NO₂</span>
+      <p class="pollutant-value" id="no2-value">16.8 <span>µg/m³</span></p>
+      <p class="pollutant-status">Nitrogen dioxide</p>
+    </article>
+  </div>
+</section>
+
+
+
+
+
+
+        </div>
+        
+        
+<script type="module" src="dist/main.js"></script>
+</body>
+</html>
